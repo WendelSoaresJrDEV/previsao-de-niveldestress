@@ -10,7 +10,7 @@ spark = SparkSession.builder.appName("StressLevel_NaiveBayes_Pipeline").getOrCre
 
 #Treinamento do modelo
 df_treinamento = spark.read.csv(
-    'datasets/StressLevelDataset_ParaTeste', 
+    'datasets/StressLevelDataset_ParaTreinamento', 
     header=True, 
     inferSchema=True
 )
@@ -35,7 +35,7 @@ print(f"Modelo salvo com o nome '{modelo_nome}'")
 modelo = joblib.load(modelo_nome)
 
 df_teste = spark.read.csv(
-    'datasets/StressLevelDataset_ParaPrevisao', 
+    'datasets/StressLevelDataset_ParaTeste', 
     header=True, 
     inferSchema=True
 )
